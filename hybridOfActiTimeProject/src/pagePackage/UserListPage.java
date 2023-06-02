@@ -1,4 +1,5 @@
 package pagePackage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +19,11 @@ public class UserListPage {
 	@FindBy(xpath = "//input[@onclick=\"cancelForm(messageResource.getMessage('user.add.cancel_button_confirm'), '/administration/userlist.do')\"]") private WebElement cancelButton;
     @FindBy(xpath = "(//a[contains(text(),'System,')]/ancestor::tbody/descendant::a)[1]") private WebElement userCreatedLink;
     @FindBy(xpath = "//input[@value='Delete This User']") private WebElement DeleteUserButton;
-	
+    @FindBy(xpath = "//*[@id='right12']") private WebElement ModifyTimeTrack;
+	@FindBy(xpath = "//*[@id='right2']") private WebElement manageCust;
+	@FindBy(xpath = "//*[@id='right1']") private WebElement manageReport;
+	@FindBy(xpath = "//*[@id='right5']") private WebElement manageUsers;
+	@FindBy(xpath = "//*[@id='right7']") private WebElement manageBilling;
  
     
     //initialization
@@ -58,8 +63,32 @@ public class UserListPage {
 	public WebElement getDeleteUserButton() {
 		return DeleteUserButton;
 	}
+	public WebElement getModifyTimeTrack() {
+		return ModifyTimeTrack;
+	}
+
+	public WebElement getManageCust() {
+		return manageCust;
+	}
+
+	public WebElement getManageReport() {
+		return manageReport;
+	}
+
+	public WebElement getManageUsers() {
+		return manageUsers;
+	}
+
+	public WebElement getManageBilling() {
+		return manageBilling;
+	}
+
+	
+	
+	
 	
 	// Operational Methods.
+	
 	
 	
 	public void createUserMethod(String usn,String pass,String Fn,String Ln) throws InterruptedException
@@ -77,7 +106,7 @@ public class UserListPage {
 		LastNameTB.sendKeys(Ln);
 		
 		Thread.sleep(1000);
-		CreateUserButton.click();
+	
 	}
 	
 	 public void deleteUserMethod() throws InterruptedException
@@ -88,6 +117,18 @@ public class UserListPage {
 	     WorkLib wl = new WorkLib();
 	     wl.acceptConfirmation();
 	 }
-	
-}
 
+	 public void selectCheckBox()
+	 {
+		 ModifyTimeTrack.click();
+		 manageCust.click();
+		 manageReport.click();
+		 manageUsers.click();
+		 manageBilling.click();
+	 }
+	
+	 public void managerCreateMethod()
+	 {
+			CreateUserButton.click();
+	 }
+}

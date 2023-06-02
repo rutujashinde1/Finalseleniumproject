@@ -1,4 +1,5 @@
 package pagePackage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,8 +12,9 @@ public class HomePage {
 	@FindBy(xpath = "//A[@class='content tasks']/IMG[@class='sizer']")private WebElement taskModule;
 	@FindBy(xpath ="//A[@class='content tt_selected selected']/DIV[2]/IMG" )private WebElement timeTrackModule; 
 	@FindBy(xpath ="//A[@class='content reports']/IMG[@class='sizer']" )private WebElement reportModule;
+	@FindBy(xpath = "//div[text()='Work Schedule']/following-sibling::img") private WebElement workScheduleModule;
 	
-	// initialization
+	// Initialization
 	public HomePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
@@ -35,9 +37,17 @@ public class HomePage {
 	public WebElement getReportModule() {
 		return reportModule;
 	} 
-	 
-	// operational Methods
 	
+	public WebElement getWorkScheduleModule() {
+		return workScheduleModule;
+	}
+
+	
+	
+	
+	// operational Methods
+
+
 	public void logOutMethod()
 	{
 		logoutLink.click();
@@ -47,6 +57,12 @@ public class HomePage {
 	{
 		usersModule.click();
 	}
+	
+	public void taskModuleMethod()
+	{
+		taskModule.click();
+	}
 }
+
 
 
